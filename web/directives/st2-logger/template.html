@@ -1,0 +1,6 @@
+<div class="st2-logger__last-time" ng-class="{'st2-logger__red':$log.getLastTime() > 1000}" 
+    ng-click="show = !show">Loaded in {{ $log.getLastTime() }}ms</div>
+<div class="st2-logger__records" ng-show="show">
+  <i class="st2-logger__reset-button icon-trash icon-white" ng-click="$log.clearRecords()" ng-show="$log.getRecords().length"></i>
+  <div ng-repeat="record in $log.getRecords()" ng-class="{'st2-logger__reset': record.reset}"><span class="st2-logger__time">t+{{(record.time / 1000).toFixed(3)}}:</span> {{record.message}}</li>
+</div>

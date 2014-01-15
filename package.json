@@ -1,0 +1,52 @@
+{
+  "name": "graph",
+  "description": "StackStorm Graph",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "express": "3.x",
+    "async": "0.2.8",
+    "lodash": "1.3.1",
+    "mech-config": "git://github.com/mechanica/Config.git#master",
+    "rrd": "git://github.com/mechanica/node_rrd.git#master",
+    "forever": "0.10.8",
+    "sockjs": "~0.3.8",
+    "hoard": "~0.1.5",
+    "rewire": "~2.0.0"
+  },
+  "scripts": {
+    "test": "env NODE_ENV=test node_modules/.bin/mocha",
+    "prestart": "node_modules/.bin/grunt production",
+    "start": "env NODE_ENV=production node_modules/forever/bin/forever start -a -l forever.log -o server.out.log -e server.err.log --minUptime 1000 --spinSleepTime 1000 server.js",
+    "stop": "node_modules/forever/bin/forever stop server.js"
+  },
+  "devDependencies": {
+    "mocha": "~1.17.0",
+    "rewire": ">=1.1.3",
+    "expect.js": "0.2.0",
+    "nock": "0.22.x",
+    "grunt": "~0.4.1",
+    "grunt-cli": "~0.1.9",
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-shell-spawn": "~0.2.4",
+    "grunt-contrib-watch": "~0.4.4",
+    "grunt-contrib-less": "~0.6.1",
+    "less": "~1.4.1",
+    "grunt-develop": "~0.2.1",
+    "karma-script-launcher": "~0.1.0",
+    "karma-chrome-launcher": "~0.1.2",
+    "karma-firefox-launcher": "~0.1.3",
+    "karma-html2js-preprocessor": "~0.1.0",
+    "karma-jasmine": "~0.1.5",
+    "karma-coffee-preprocessor": "~0.1.2",
+    "requirejs": "~2.1.9",
+    "karma-requirejs": "~0.2.1",
+    "karma-phantomjs-launcher": "~0.1.1",
+    "karma": "~0.10.9",
+    "karma-mocha": "~0.1.1",
+    "karma-ng-html2js-preprocessor": "~0.1.0",
+    "grunt-karma": "~0.6.2",
+    "karma-expect": "~1.0.0",
+    "karma-sinon": "~1.0.0"
+  }
+}

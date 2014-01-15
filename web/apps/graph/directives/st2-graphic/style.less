@@ -1,0 +1,52 @@
+@import "colors.less";
+
+st2-graphic {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  display: block;
+  background-color: #111;
+  
+  svg {
+    width: 100%;
+    height: 100%;
+    cursor: text;
+    
+    g {
+      pointer-events: none;
+    }
+  }
+}
+
+.st2-graphic {
+  &__line {
+    fill: none;
+    stroke: #888;
+  }
+  
+  &__x-axis, &__y-axis {
+    text {
+      shape-rendering: geometricPrecision;
+      font-size: 9px;
+      fill: #888;
+    }
+    
+    line, path {
+      fill: none;
+      stroke: #333;
+      shape-rendering: crispEdges;
+    }
+    
+    .domain {
+      stroke: none;
+    }
+  }
+  
+  &__cursor {
+    stroke: red;
+  }
+  
+  &__selector {
+    fill: rgba(0, 0, 0, .3);
+  }
+}

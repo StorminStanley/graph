@@ -1,0 +1,67 @@
+@import 'fontawesome.less';
+@import "colors.less";
+
+.st2-timepicker {
+  width: 600px;
+  box-sizing: border-box;
+  display: block;
+  color: #eee;
+  position: relative;
+  
+  svg {
+    width: 100%;
+    height: 50px;
+  }
+  
+  &__period {
+    display: inline-block;
+    white-space: nowrap;
+    
+    input {
+      display: none;
+    }
+    
+    input:checked ~ &-name {
+      color: lightblue;
+    }
+    
+    input:disabled ~ &-name {
+      color: gray;
+    }
+  }
+  
+  &__play {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    color: black;
+    font-size: 24px;
+    line-height: 30px;
+    
+    &--active {
+      color: lightblue;
+    }
+  }
+  
+  &__control {
+    circle {
+      stroke: black;
+      stroke-width: 3;
+      fill: black;
+    }
+    
+    line {
+      stroke: black;
+    }
+    
+    &--active {
+      circle {
+        fill: lightblue;
+      }
+      
+      line {
+        stroke: lightblue;
+      }
+    }
+  }
+}

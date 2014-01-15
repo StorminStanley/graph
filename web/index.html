@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en" ng-app="main" ng-controller="MainCtrl">
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="&copy; DZ, 2013">
+  <title ng-bind="route.current.title"></title>
+  
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  
+  <!-- Le styles -->
+  <link rel="stylesheet" href="components/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- libraries  -->
+  <script src="components/jquery/jquery.js"></script>
+  <script src="components/bootstrap/js/bootstrap.js"></script>
+  <script src="components/angular/angular.js"></script>
+  <script src="components/angular-route/angular-route.js"></script>
+  <script src="components/d3/d3.js"></script>
+  <script src="components/lodash/dist/lodash.js"></script>
+  <script src="components/sockjs/sockjs.js"></script>
+  <!-- Application scripts  -->
+  <script src="main.js"></script>
+  <script src="apps/graph/controller.js"></script>
+  <script src="apps/graph/service.js"></script>
+  <script src="apps/graph/layer.js"></script>
+  <script src="apps/graph/graph.js"></script>
+  <script src="apps/graph/dashboard.js"></script>
+  <script src="apps/graph/colors.js"></script>
+  <script src="directives/helpers.js"></script>
+  <script src="directives/st2-logger/directive.js"></script>
+  <script src="directives/st2-menu/directive.js"></script>
+  <script src="directives/st2-scroller/directive.js"></script>
+  <script src="apps/graph/directives/st2-graphic/directive.js"></script>
+  <script src="apps/graph/directives/st2-metrics/directive.js"></script>
+  <script src="apps/graph/directives/st2-toolbar/directive.js"></script>
+  <script src="apps/graph/directives/st2-timepicker/directive.js"></script>
+  <script src="apps/graph/directives/st2-notooltip/directive.js"></script>
+</head>
+
+<body>
+  
+  <div class="st2-menu"></div>
+  
+  <div class="main" ng-view>
+    <!-- Angular views GO HERE -->
+  </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<div class="st2-scroller graph">
+  
+  <div class="graph__overlay" ng-show="spec && showOverlay">
+    <div class="graph__fixed">
+      <div class="st2-metrics" dashboard="dashboard" spec="spec" selected="selected"></div>
+    </div>
+    <div class="graph__fixed">
+      <div class="st2-toolbar" spec="spec" selected="selected"></div>
+    </div>
+    <div class="graph__fluid">
+      <st2-graphic spec="spec"></st2-graphic>
+    </div>
+  </div>
+  
+  <div class="graph__fluid">
+    <div class="graph__header">
+      <div class="graph__header-fixed">
+        <div class="btn btn-inverse" ng-click="addGraph()">Add graph</div>
+      </div>
+      <div class="graph__header-fluid"></div>
+      <div class="st2-timepicker graph__header-fixed" spec="dashboard"></div>
+      <div class="graph__header-fluid"></div>
+    </div>
+    <div class="graph__dashboard" ng-repeat="graph in dashboard.graphs">
+      <div class="graph__item">
+        <div class="graph__title">{{ graph.opts.title }}</div>
+        <div class="graph__settings">
+          <i class="fontawesome-remove" ng-click="removeGraph(graph)"></i>
+          <i class="fontawesome-cog" ng-click="editGraph(graph)"></i>
+        </div>
+        <st2-graphic spec="graph"></st2-graphic>
+      </div>
+      <div class="graph__info st2-notooltip" spec="graph"></div>
+    </div>
+  </div>
+</div>

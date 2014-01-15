@@ -1,0 +1,24 @@
+# Server configuration
+# --------------------
+# Used for server configuration.
+# Will not be shown at client, so it's safe to store session key (or something like that) in this 
+# section.
+server:
+  # Server port
+  # For port <1024, you should run it as root
+  port: 9000
+  # Static directory
+  # Path to a directory of your static data (html, client-side js, styles, images)
+  static-directory: web
+  # Log info
+  # When false, suppress output of console.info
+  log-info: false
+
+  collectd:
+    # For RRD
+    path: ../sampledata
+    time: 1370640000000
+    
+    # For WSP. Don't forget to change time in st2-timepicker/directive.js too.
+    # path: ../samplewsp
+    # time: 1387390000000

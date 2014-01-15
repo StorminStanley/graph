@@ -1,0 +1,168 @@
+@import 'fontawesome.less';
+
+.st2-toolbar {
+  display: -webkit-flex;
+  display: flex;
+
+  &__settings {
+    padding: 10px;
+    border-right: 1px solid #fff;
+  }
+  
+  &__layers {
+    padding: 25px 10px 10px;
+    flex: 1;
+  }
+  
+  &__layer {
+    display: inline-block;
+    background-color: #ccc;
+    margin-right: 10px;
+    margin-bottom: 4px;
+    border-radius: 5px;
+    vertical-align: bottom;
+    position: relative;
+    
+    &-name {
+      padding: 2px 5px;
+      cursor: pointer;
+      display: inline-block;
+    }
+  }
+  
+  &__dropdown {
+    position: absolute;
+    padding: 10px 10px 5px;
+    background-color: #1C97AF;
+    border-radius: 5px;
+    width: 300px;
+    box-sizing: border-box;
+    color: #B0E1E8;
+    margin-top: 10px;
+    z-index: 1;
+    
+    &:before {
+      width: 0;
+      height: 0;
+      border: 10px solid;
+      border-color: transparent transparent #1C97AF transparent;
+      display: block;
+      content: '';
+      position: absolute;
+      top: -20px;
+    }
+    
+    &-row {
+      display: flex;
+      
+      &-label {
+        flex: 1;
+        padding: 5px 7px;
+        color: #B0E1E8;
+      }
+      
+      & + & {
+        margin-top: 5px;
+      }
+    }
+    
+    &-swatch {
+      
+      &-group {
+        flex: 2;
+      }
+      
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      margin: 0 3px 3px 0;
+      cursor: pointer;
+    }
+    
+    &-btn {
+      
+      &-group {
+        display: flex;
+        flex: 2;
+      }
+      
+      background-color: #4CB5C7;
+      padding: 5px 7px;
+      text-align: center;
+      width: 50px;
+      flex: 1;
+      cursor: pointer;
+      
+      &-group & {
+        &:first-of-type {
+          border-radius: 4px 0 0 4px;
+          margin-left: 0;
+        }
+      
+        &:last-of-type {
+          border-radius: 0 4px 4px 0;
+          margin-right: 0;
+        }
+      }
+      
+      &-group & + & {
+        margin-left: 5px;
+      }
+      
+      &--active {
+        color: white;
+      }
+    }
+    
+    &-select {
+      position: relative;
+      flex: 2;
+      
+      select {
+        background-color: #4CB5C7;
+        border: 0;
+        -webkit-appearance: none;
+        padding: 5px 7px;
+        line-height: normal;
+        height: initial;
+        color: #B0E1E8;
+        box-sizing: border-box;
+        margin: 0;
+        outline: 0;
+        width: 100%;
+      }
+      
+      &:after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: block;
+        width: 20px;
+        height: 100%;
+        content: '\f0dc';
+        font-family: 'FontAwesome';
+        font-style: normal;
+        color: #B0E1E8;
+        padding: 4px;
+        box-sizing: border-box;
+        pointer-events: none;
+      }
+    }
+    
+    &-input {
+      flex: 2;
+    }
+    
+    &-edit, &-delete {
+      float: left;
+      padding: 5px 7px;
+      margin-top: 5px;
+      cursor: pointer;
+    }
+    
+    &-delete {
+      float: right;
+    }
+  }
+
+}

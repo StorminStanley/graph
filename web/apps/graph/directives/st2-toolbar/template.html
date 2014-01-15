@@ -1,0 +1,53 @@
+<div class="st2-toolbar__layers">
+  <div class="st2-toolbar__layer" ng-repeat="layer in spec.layers" ng-style="{ 
+    'background-color': layer.opts.color
+  }">
+    <div class="st2-toolbar__layer-name" ng-click="toggle(layer)">
+      <i class="fontawesome-warning-sign" ng-show="layer.error" title="{{layer.error}}"> </i>{{ layer.opts.title || layer.channel }}
+    </div>
+    <div class="st2-toolbar__dropdown" ng-show="$parent.show == layer">
+      <div class="st2-toolbar__dropdown-row">
+        <div class="st2-toolbar__dropdown-row-label">
+          Name: 
+        </div>
+        <input type="text" class="st2-toolbar__dropdown-input" placeholder="{{layer.channel}}" ng-model="layer.opts.title"/>
+      </div>
+      <div class="st2-toolbar__dropdown-row">
+        <div class="st2-toolbar__dropdown-row-label">
+          Color: 
+        </div>
+        <div class="st2-toolbar__dropdown-swatch-group">
+          <div class="st2-toolbar__dropdown-swatch" ng-repeat="color in colors" ng-click="layer.opts.color = color" ng-style="{
+            'background-color': color
+          }"></div>
+        </div>
+      </div>
+      <div class="st2-toolbar__dropdown-row">
+        <div class="st2-toolbar__dropdown-row-label">
+          Shape: 
+        </div>
+        <div class="st2-toolbar__dropdown-btn-group">
+          <span class="st2-toolbar__dropdown-btn" ng-repeat="type in types" ng-click="layer.opts.type = type.name" ng-class="{
+            'st2-toolbar__dropdown-btn--active': layer.opts.type == type.name
+          }">
+            <i class="{{ type.icon }}"></i>
+          </span>
+        </div>
+      </div>
+      <div class="st2-toolbar__dropdown-row">
+        <div class="st2-toolbar__dropdown-row-label">
+          Unit: 
+        </div>
+        <div class="st2-toolbar__dropdown-select">
+          <select ng-model="layer.opts.units" ng-options="unit as unit for (unit, _) in units"></select>
+        </div>
+      </div>
+      <div class="st2-toolbar__dropdown-edit" ng-click="$parent.selected = layer">
+        <i class="fontawesome-edit"></i> edit
+      </div>
+      <div class="st2-toolbar__dropdown-delete" ng-click="spec.removeLayer(layer)">
+        delete <i class="fontawesome-remove"></i>
+      </div>
+    </div>
+  </div>
+</div>

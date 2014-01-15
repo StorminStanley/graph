@@ -1,0 +1,15 @@
+.macro-border (@from, @to) {
+          border-image:         linear-gradient(bottom, @from 0%, @to 50%, @from 100%) 1 100%;
+       -o-border-image:      -o-linear-gradient(bottom, @from 0%, @to 50%, @from 100%) 1 100%;
+     -moz-border-image:    -moz-linear-gradient(bottom, @from 0%, @to 50%, @from 100%) 1 100%;
+      -ms-border-image:     -ms-linear-gradient(bottom, @from 0%, @to 50%, @from 100%) 1 100%;
+  -webkit-border-image: -webkit-linear-gradient(bottom, @from 0%, @to 50%, @from 100%) 1 100%;
+}
+
+.macro-gradient (@start, @stop, @percent, @end) {
+  background-image: linear-gradient(top, @start 0%, @stop @percent, @end 100%);
+  background-image: -o-linear-gradient(top, @start 0%, @stop @percent, @end 100%);
+  background-image: -moz-linear-gradient(top, @start 0%, @stop @percent, @end 100%);
+  background-image: -ms-linear-gradient(top, @start 0%, @stop @percent, @end 100%);
+  background-image: -webkit-linear-gradient(top, @start 0%, @stop @percent, @end 100%);
+}

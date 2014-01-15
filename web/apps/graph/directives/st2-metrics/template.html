@@ -1,0 +1,32 @@
+<div class="st2-metrics__search">
+  <form ng-submit="search && submit(search)">
+    <div class="st2-metrics__back" ng-click="back()"><i class="fontawesome-arrow-left"> </i>Dashboard</div>
+    <input type="text" ng-model="spec.opts.title" class="st2-metrics__search-name" placeholder="graph name"/>
+    <input type="search" ng-model="search" class="st2-metrics__search-field" ng-style="selected && {
+      'background-color': selected.opts.color
+    }" placeholder="search metric"/>
+    <button type="submit" tabindex="-1">{{ selected && 'Save' || 'Add' }}</button>
+    <button type="reset" tabindex="-1" ng-click="selected = undefined" ng-show="selected">Cancel</button>
+  </form>
+</div>
+<div class="st2-metrics__browser" ng-show="toggle">
+  <div class="st2-metrics__browser-wrapper">
+    <div class="st2-metrics__browser-column" ng-repeat="column in browser" ng-show="column.files.length">
+      <div class="st2-metrics__browser-scroller">
+        <div class="st2-metrics__browser-item" ng-repeat="item in column.files">{{ item }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="st2-metrics__toggle">
+  <div class="st2-metrics__toggle-on" ng-hide="toggle" ng-click="toggle = !toggle"><i class="fontawesome-chevron-down"></i></div>
+  <div class="st2-metrics__toggle-off" ng-show="toggle" ng-click="toggle = !toggle"><i class="fontawesome-chevron-up"></i></div>
+</div>
+<div class="st2-metrics__suggest" ng-show="search && !toggle && (results | filter:lastToken).length">
+  <div class="st2-metrics__suggest-item" ng-repeat="token in results | filter:lastToken | limitTo:10" tabindex="0"><span class="st2-metrics__suggest-path">{{ path && path + '/' || '' }}</span>{{ token }}</div>
+  <div class="st2-metrics__toggle">
+    <div class="st2-metrics__toggle-on" ng-hide="toggle" ng-click="toggle = !toggle"><i class="fontawesome-chevron-down"></i></div>
+    <div class="st2-metrics__toggle-off" ng-show="toggle" ng-click="toggle = !toggle"><i class="fontawesome-chevron-up"></i></div>
+  </div>
+</div>
+

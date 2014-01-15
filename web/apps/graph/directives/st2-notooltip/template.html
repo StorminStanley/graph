@@ -1,0 +1,14 @@
+<div class="st2-notooltip__row" ng-repeat="(name, value) in spec.get(time)" ng-show="time">
+  <div class="st2-notooltip__cell">
+    {{ (value || value == 0) && units[spec.layers[name].opts.units || 'decimal'](value).toString() || '' }}
+  </div>
+  <div class="st2-notooltip__cell">
+    <div class="st2-notooltip__label" ng-style="{
+      'color': spec.layers[name].opts.color
+    }">{{ spec.layers[name].opts.title || name }}</div>
+    <div class="st2-notooltip__meter" ng-style="{
+      width: y(value) + '%',
+      'background-color': spec.layers[name].opts.color
+    }"></div>
+  </div>
+</div>

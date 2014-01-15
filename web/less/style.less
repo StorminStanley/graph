@@ -1,0 +1,72 @@
+@import "fonts.less";
+@import "colors.less";
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-size: 14px;
+  padding-top: 40px;
+  -webkit-user-select: none;
+  box-sizing: border-box;
+}
+
+p {
+  margin: 0px; 
+}
+
+svg {
+  shape-rendering: geometricPrecision;
+   
+  text {
+    font-family: @kpi-font;
+    color: #CCCCCC;
+   }
+   
+  .svg-warning {
+    fill: #FF7000;
+  }
+
+  .svg-attention {
+    fill: #FFD717;
+  }
+
+  .svg-normal {
+    fill: #18E000;
+  }
+
+  .svg-void {
+    fill: #EEEEEE;
+  }
+}
+
+.main {
+  line-height: 135%;
+  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  overflow-y: hidden;
+  overflow-x: hidden;
+  height: 100%;
+  font-family: @text-font;
+
+  ::-webkit-input-placeholder { /* WebKit browsers */
+      color: @input-placeholder;
+      font-style: italic;
+  }
+  :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+      color: @input-placeholder;
+      font-style: italic;
+  }
+  ::-moz-placeholder { /* Mozilla Firefox 19+ */
+      color: @input-placeholder;
+      font-style: italic;
+  }
+  :-ms-input-placeholder { /* Internet Explorer 10+ */
+      color: @input-placeholder;
+      font-style: italic;
+  }
+}

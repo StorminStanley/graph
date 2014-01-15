@@ -1,0 +1,19 @@
+{
+  "name": "osh-ui",
+  "version": "0.0.1",
+  "dependencies": {
+    "angular": "~1.2.8",
+    "jquery": "~2.0.3",
+    "bootstrap": "http://getbootstrap.com/2.3.2/assets/bootstrap.zip",
+    "d3": "~3.3.13",
+    "lodash": "~2.4.1",
+    "sockjs": "~0.3.4",
+    "angular-route": "~1.2.7",
+    "angular-mocks": "~1.2.7"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ]
+}

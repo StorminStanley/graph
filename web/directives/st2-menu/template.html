@@ -1,0 +1,13 @@
+<div class="navbar navbar-inverse navbar-fixed-top" >
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <a class="brand" href="#">StackStorm</a>
+      <ul class="nav">
+        <li ng-repeat="route in routes" ng-class="{active:isActiveLocation(route.href)}">
+          <a class="st2-link" href="#{{route.href}}" target="{{route.name}}">{{route.title}}</a>
+        </li>
+      </ul>
+      <p class="navbar-text pull-right timestamp"><span class="st2-logger"></span></p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="st2-timepicker__periods btn-group">
+  <label class="st2-timepicker__period btn btn-inverse" ng-repeat="name in periods | keys">
+    <input type="radio" ng-model="$parent.periodPicker" value="{{name}}"/><span class="st2-timepicker__period-name">{{ name }} </span>
+  </label>
+  <label class="st2-timepicker__period btn btn-inverse">
+    <input type="radio" ng-model="periodPicker" value="custom" ng-disabled="!customTimeframe"/><span class="st2-timepicker__period-name">Custom</span>
+  </label>
+</div>
+<div class="st2-timepicker__play" ng-class="{'st2-timepicker__play--active': !periodPicker}" ng-click="play()">
+  <i class="fontawesome-play"></i>
+</div>
