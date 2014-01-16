@@ -22,3 +22,5 @@ server:
     # For WSP. Don't forget to change time in st2-timepicker/directive.js too.
     # path: ../samplewsp
     # time: 1387390000000
+client:
+  test: false

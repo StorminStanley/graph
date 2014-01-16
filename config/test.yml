@@ -1,0 +1,10 @@
+server:
+  port: 9000
+  static-directory: web
+  log-info: false
+  collectd:
+    path: ../sampledata
+    time: 1370640000000
+
+client:
+  test: true
