@@ -15,7 +15,7 @@
     "rewire": "~2.0.0"
   },
   "scripts": {
-    "test": "env NODE_ENV=test node_modules/.bin/mocha",
+    "test": "env NODE_ENV=test node_modules/.bin/mocha test/*.js lib/**/test/*.js",
     "prestart": "node_modules/.bin/grunt production",
     "start": "env NODE_ENV=production node_modules/forever/bin/forever start -a -l forever.log -o server.out.log -e server.err.log --minUptime 1000 --spinSleepTime 1000 server.js",
     "stop": "node_modules/forever/bin/forever stop server.js"
@@ -47,6 +47,7 @@
     "karma-ng-html2js-preprocessor": "~0.1.0",
     "grunt-karma": "~0.6.2",
     "karma-expect": "~1.0.0",
-    "karma-sinon": "~1.0.0"
+    "karma-sinon": "~1.0.0",
+    "proxyquire": "~0.5.2"
   }
 }
