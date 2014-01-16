@@ -16,8 +16,7 @@ server:
 
   collectd:
     # For RRD
-    path: ../sampledata
-    time: 1370640000000
+    path: ../localdata
     
     # For WSP. Don't forget to change time in st2-timepicker/directive.js too.
     # path: ../samplewsp

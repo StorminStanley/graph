@@ -78,8 +78,7 @@
           
           scope.$watch('periodPicker', function (key) {
             if (key) {
-              // var now = new Date(1387390000000); // For WSP
-              var now = new Date(1370640000000); // For RRD
+              var now = new Date();
               if (key === 'custom') {
                 broadcast(scope.customTimeframe.from * 1000, scope.customTimeframe.to * 1000);
               } else {

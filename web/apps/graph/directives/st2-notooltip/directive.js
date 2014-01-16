@@ -8,48 +8,58 @@
   }
 
   angular.module('main')
-    .value('st2Units', {
-      percent: function (num) {
-        // Percent value at [0..1] domain
-        return {
-          value: num * 100,
-          multi: '%',
-          toString: basicStringComposer()
-        };
-      },
-      'decimal percent': function (num) {
-        // Percent value at [0..100] domain
-        return {
-          value: num,
-          multi: '%',
-          toString: basicStringComposer()
-        };
-      },
-      decimal: function (num) {
-        // Any decimal value
-        return {
-          value: num,
-          multi: '',
-          toString: basicStringComposer(3)
-        };
-      },
-      bits: function (num) {
-        // Value in bits (commonly, tx or rx)
-        return {
-          value: num,
-          multi: 'b',
-          toString: basicStringComposer
-        };
-      },
-      bytes: function (num) {
-        // Value in bytes
-        return {
-          value: num,
-          multi: 'B',
-          toString: basicStringComposer
-        };
-      }
-    });
+    .factory('st2Units', ['$filter', function ($filter) {
+      return {
+        percent: function (num) {
+          // Percent value at [0..1] domain
+          return {
+            value: num * 100,
+            multi: '%',
+            toString: basicStringComposer()
+          };
+        },
+        'decimal percent': function (num) {
+          // Percent value at [0..100] domain
+          return {
+            value: num,
+            multi: '%',
+            toString: basicStringComposer()
+          };
+        },
+        decimal: function (num) {
+          // Any decimal value
+          return {
+            value: num,
+            multi: '',
+            toString: basicStringComposer(3)
+          };
+        },
+        bits: function (num) {
+          // Value in bits (commonly, tx or rx)
+          var bits = $filter('toSize')(num, 'object');
+
+          return {
+            value: bits.value,
+            multi: bits.multi,
+            toString: function () {
+              return this.value + ' ' + this.multi;
+            }
+          };
+        },
+        bytes: function (num) {
+          // Value in bytes
+          var bytes = $filter('toSize')(num, 'object');
+
+          return {
+            value: bytes.value,
+            multi: bytes.multi,
+            toString: function () {
+              return this.value + ' ' + this.multi;
+            }
+          };
+        }
+      };
+    }]);
     
   angular.module('main')
     .directive('st2Notooltip', ['st2Units', function (units) {

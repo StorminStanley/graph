@@ -106,12 +106,10 @@
               subscribed && self.unsubscribe();
               self.subscribe();
             } else {
-              console.log(period.from, period.to);
               self.values = [];
               self.unsubscribe();
               deferred = $q.defer();
               self.fetch(period.from, period.to, function (err, ref, data) {
-                console.log(data.length);
                 self.values = data;
                 self.$apply(function () {
                   deferred.resolve();

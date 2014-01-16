@@ -12,12 +12,22 @@ Cool visualizations for monitoring data - graphite, collectd3, ganglia
 
 ## Sample data
 
-Get [sample data](https://s3-us-west-1.amazonaws.com/stackstorm/collectd3-sampledata/sampledata.zip) and extract it outside of the project directory.
+To collect sample data locally, you need to install collectd.
+
+		$ brew install collectd
+
+Then you need to configure both collectd and our application to work together. On a Mac, i recommend you to create an empty directory 'localdata' just outside Graph's directory and uncomment a few lines in collectd.conf
+
+		Hostname    "localhost"
+		FQDNLookup   false
+		BaseDir     "/path/to/localdata"
+
+Then, all you need to do is to run collectd and give it some time to gather stats. Just a couple of minutes.
 
 ## Configure
 Open `config/default.yml`. Do it!
 
-Set up collectd or whisper directory and initial timestamp.
+Set up collectd or whisper directory.
 
 ## Developing
 

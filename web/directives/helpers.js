@@ -10,6 +10,11 @@ angular.module('main')
       var precision = 3 - value.toString().split('.')[0].length;
 
       switch (selector) {
+      case 'object':
+        return {
+          value: value.toFixed(precision < 0 ? 0 : precision),
+          multi: sizes[i]
+        };
       case 'value':
         return value.toFixed(precision < 0 ? 0 : precision);
       case 'multi':
