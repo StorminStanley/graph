@@ -48,6 +48,7 @@
     "grunt-karma": "~0.6.2",
     "karma-expect": "~1.0.0",
     "karma-sinon": "~1.0.0",
-    "proxyquire": "~0.5.2"
+    "proxyquire": "~0.5.2",
+    "sinon": "~1.7.3"
   }
 }
