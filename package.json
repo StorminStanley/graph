@@ -12,7 +12,8 @@
     "forever": "0.10.8",
     "sockjs": "~0.3.8",
     "hoard": "~0.1.5",
-    "rewire": "~2.0.0"
+    "rewire": "~2.0.0",
+    "connect-nedb-session": "0.0.2"
   },
   "scripts": {
     "test": "env NODE_ENV=test node_modules/.bin/mocha test/*.js lib/**/test/*.js",

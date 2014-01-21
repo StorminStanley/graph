@@ -5,7 +5,22 @@ var express = require('express')
   , config = require('mech-config').server
   , app = express()
   , http = require('http')
-  , sockjs  = require('sockjs');
+  , sockjs  = require('sockjs')
+  , sessionStore = require('./lib/sessionstore.js');
+
+app.use(express.cookieParser());
+
+// Set up sessions
+app.use(express.session({
+  secret: 'yoursecret',
+  key: 'st2session',
+  cookie: {
+    path: '/',
+    httpOnly: true,
+    maxAge: 365 * 24 * 3600 * 1000
+  },
+  store: sessionStore
+}));
 
 //body parser next, so we have req.body
 //we don't need it at the moment and it's breaking http-proxy POST request routing

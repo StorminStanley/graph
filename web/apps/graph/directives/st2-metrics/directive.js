@@ -96,6 +96,7 @@
               scope.dashboard.removeGraph(scope.spec.$proto);
               delete scope.spec.$proto;
               scope.dashboard.addGraph(scope.spec.opts, scope.spec.layers);
+              scope.dashboard.save();
             }
             
             delete scope.spec.$proto;
