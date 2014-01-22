@@ -1,8 +1,9 @@
 'use strict';
 
 /* App Module */
-angular.module('main', ['ngRoute'])
-  .config(['$routeProvider', function ($routeProvider) {
+angular.module('main', ['ngRoute', 'LocalStorageModule'])
+  .config(['$routeProvider', 'localStorageServiceProvider', function ($routeProvider, localStorageServiceProvider) {
+    localStorageServiceProvider.setPrefix('st2Storage');
     $routeProvider
       .when('/graph', {
         templateUrl: 'apps/graph/template.html',

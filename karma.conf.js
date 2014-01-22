@@ -19,6 +19,7 @@ module.exports = function(config) {
       'web/components/angular/angular.js',
       'web/components/angular-route/angular-route.js',
       'web/components/angular-mocks/angular-mocks.js',
+      'web/components/angular-local-storage/angular-local-storage.js',
       'web/components/d3/d3.js',
       'web/components/lodash/dist/lodash.js',
       'web/components/sockjs/sockjs.js',

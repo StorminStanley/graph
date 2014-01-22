@@ -12,19 +12,22 @@ describe('st2-graph-service', function() {
 
       self.send = function (message) {
         var packet = JSON.parse(message);
-        if (!packet.ref) {
-          self.onmessage({ data: message });
-        } else {
-          var container = {
-            channel: packet.ref,
-            message: packet.message
-          };
-          self.onmessage({ data: JSON.stringify(container) });
-        }
+        setTimeout(function () {
+          if (!packet.ref) {
+            self.onmessage({ data: message });
+          } else {
+            var container = {
+              channel: packet.ref,
+              message: packet.message
+            };
+            self.onmessage({ data: JSON.stringify(container) });
+          }
+        }, 0);
       };
 
       setTimeout(function () {
         self.onopen();
+        self.onmessage({ data: '{"channel": "handshake", "message": "test"}'});
       }, 0);
     };
   });
@@ -83,9 +86,11 @@ describe('st2-graph-service', function() {
       service.send('a', 'b');
 
       setTimeout(function () {
-        expect(callback1.calledWith(null, 'a', 'b')).to.be(true);
-        expect(callback2.calledWith(null, 'a', 'b')).to.be(true);
-        next();
+        setTimeout(function () {
+          expect(callback1.calledWith(null, 'a', 'b')).to.be(true);
+          expect(callback2.calledWith(null, 'a', 'b')).to.be(true);
+          next();
+        }, 0);
       }, 0);
     });
   });
@@ -108,9 +113,11 @@ describe('st2-graph-service', function() {
       service.send('a', 'b');
 
       setTimeout(function () {
-        expect(callback1.calledWith(null, 'a', 'b')).to.be(false);
-        expect(callback2.calledWith(null, 'a', 'b')).to.be(false);
-        next();
+        setTimeout(function () {
+          expect(callback1.calledWith(null, 'a', 'b')).to.be(false);
+          expect(callback2.calledWith(null, 'a', 'b')).to.be(false);
+          next();
+        }, 0);
       }, 0);
     });
 
@@ -126,9 +133,11 @@ describe('st2-graph-service', function() {
       service.send('a', 'b');
 
       setTimeout(function () {
-        expect(callback1.calledWith(null, 'a', 'b')).to.be(false);
-        expect(callback2.calledWith(null, 'a', 'b')).to.be(true);
-        next();
+        setTimeout(function () {
+          expect(callback1.calledWith(null, 'a', 'b')).to.be(false);
+          expect(callback2.calledWith(null, 'a', 'b')).to.be(true);
+          next();
+        }, 0);
       }, 0);
     });
   });

@@ -2,7 +2,7 @@
 (function () {
 
   angular.module('main')
-    .service('st2GraphService', ['$rootScope', '$log', '$q', function ($root, $log, $q) {
+    .service('st2GraphService', ['$rootScope', '$log', '$q', 'localStorageService', function ($root, $log, $q, localStorageService) {
       var sock = new SockJS('/graph');
       var channels = {};
       
@@ -13,9 +13,28 @@
       var deferred = $q.defer();
       
       sock.onopen = function () {
-        $root.$apply(function () {
-          deferred.resolve();
-        });
+        var session = localStorageService.get('session');
+
+        sock.onmessage = function (container) {
+          var packet = JSON.parse(container.data);
+
+          $root.$apply(function () {
+            if (packet.channel === 'handshake' && packet.message) {
+              deferred.resolve();
+            } else {
+              deferred.reject();
+            }
+          });
+
+          localStorageService.set('session', packet.message || undefined);
+        };
+
+        var packet = {
+          channel: 'handshake',
+          message: localStorageService.get('session')
+        };
+
+        sock.send(JSON.stringify(packet));
       };
       
       var promise = deferred.promise;
@@ -32,7 +51,9 @@
         });
       };
       
-      sock.onmessage = dispatcher;
+      promise = promise.then(function () {
+        sock.onmessage = dispatcher;
+      });
       
       // Private interfaces
       

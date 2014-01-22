@@ -9,7 +9,8 @@
     "lodash": "~2.4.1",
     "sockjs": "~0.3.4",
     "angular-route": "~1.2.7",
-    "angular-mocks": "~1.2.7"
+    "angular-mocks": "~1.2.7",
+    "angular-local-storage": "*"
   },
   "ignore": [
     "**/.*",
