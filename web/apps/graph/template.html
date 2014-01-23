@@ -1,5 +1,4 @@
 <div class="st2-scroller graph">
-  
   <div class="graph__overlay" ng-show="spec && showOverlay">
     <div class="graph__fixed">
       <div class="st2-metrics" dashboard="dashboard" spec="spec" selected="selected"></div>
@@ -11,9 +10,13 @@
       <st2-graphic spec="spec"></st2-graphic>
     </div>
   </div>
-  
   <div class="graph__fluid">
     <div class="graph__header">
+      <div class="graph__header-fixed">
+        <label class="graph__select">
+          <select class="btn btn-inverse" ng-model="$parent.dashboardid" ng-options="name for name in listDashboards"></select>
+        </label>
+      </div>
       <div class="graph__header-fixed">
         <div class="btn btn-inverse" ng-click="addGraph()">Add graph</div>
       </div>

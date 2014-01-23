@@ -32,7 +32,7 @@ describe('st2-graph-dashboard', function() {
     scope = $rootScope.$new();
 
     $injector.invoke(function (st2GraphDashboard) {
-      instance = new st2GraphDashboard(scope, { from: 1, to: 2 });
+      instance = new st2GraphDashboard(scope, 'some');
     });
   }));
 
@@ -52,16 +52,27 @@ describe('st2-graph-dashboard', function() {
     });
   });
 
-  describe('period', function () {
-    it('should be an object', function () {
-      expect(instance).to.have.property('period');
-      expect(instance.period).to.be.an('object');
+  describe('name', function () {
+    it('should be a string', function () {
+      expect(instance).to.have.property('name');
+      expect(instance.name).to.be.a('string');
     });
 
     it('should be set by constructor attribute', function () {
-      expect(instance.period).to.eql({ from: 1, to: 2 });
+      expect(instance.name).to.be('some');
     });
   });
+
+  // describe('period', function () {
+  //   it('should be an object', function () {
+  //     expect(instance).to.have.property('period');
+  //     expect(instance.period).to.be.an('object');
+  //   });
+
+  //   it('should be set by constructor attribute', function () {
+  //     expect(instance.period).to.eql({ from: 1, to: 2 });
+  //   });
+  // });
 
   describe('addGraph', function () {
     it('should be a function', function () {

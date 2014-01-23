@@ -91,4 +91,26 @@
     white-space: nowrap;
     flex: 1;
   }
+
+  &__select {
+    position: relative;
+
+    select {
+      -webkit-appearance: none;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    &:after {
+      content: "\f0dc";
+      font-family: 'FontAwesome';
+      font-style: normal;
+      color: #fff;
+      display: inline-block;
+      margin-left: -20px;
+      pointer-events: none;
+    }
+  }
 }

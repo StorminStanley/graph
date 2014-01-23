@@ -15,14 +15,14 @@
           return _.zipObject(events, disregistrators);
         }
 
-        var Dashboard = function (scope, period) {
+        var Dashboard = function (scope, name) {
           var self = scope.$new();
 
           self.graphs = [];
-          self.period = period;
+          self.name = name;
 
-          graphService.send('fetchdashboard', undefined, function (err, ref, message) {
-            _.each(message, function (e) {
+          graphService.send('fetchdashboard', name, function (err, ref, message) {
+            _.each(message.graphs, function (e) {
               self.addGraph(e.opts, e.layers);
             });
           });
@@ -48,28 +48,32 @@
           };
 
           self.save = function (fn) {
-            graphService.send('savedashboard', _.map(self.graphs, function (e) {
-              return {
-                opts: e.opts,
-                layers: _.map(e.layers, function (e) {
-                  return {
-                    channel: e.channel,
-                    opts: e.opts
-                  };
-                })
-              };
-            }), fn);
+            graphService.send('savedashboard', {
+              name: self.name,
+              graphs: _.map(self.graphs, function (e) {
+                return {
+                  opts: e.opts,
+                  layers: _.map(e.layers, function (e) {
+                    return {
+                      channel: e.channel,
+                      opts: e.opts
+                    };
+                  })
+                };
+              })
+            }, fn);
           };
 
-          //var eventsOff =
-          relayEvents(['timeframeChanged', 'cursormove'], scope, self);
+          var eventsOff = relayEvents(['timeframeChanged', 'cursormove'], scope, self);
 
-          // Just to be sure i will not forgot that when the time comes.
-          // self.remove = function () {
-          //   _.each(eventsOff, function (e) {
-          //     e();
-          //   });
-          // }
+          self.remove = function () {
+            _.each(self.graphs, function (e) {
+              e.remove();
+            });
+            _.each(eventsOff, function (e) {
+              e();
+            });
+          };
 
           self.$on('timeframeChanged', function (e, to, from) {
             self.period = to !== "now" && { from: from, to: to };
