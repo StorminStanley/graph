@@ -24,7 +24,7 @@
       <div class="st2-timepicker graph__header-fixed" spec="dashboard"></div>
       <div class="graph__header-fluid"></div>
     </div>
-    <div class="graph__dashboard" ng-repeat="graph in dashboard.graphs">
+    <div class="graph__dashboard st2-drag" ng-repeat="graph in dashboard.graphs">
       <div class="graph__item">
         <div class="graph__title">{{ graph.opts.title }}</div>
         <div class="graph__settings">
@@ -34,6 +34,8 @@
         <st2-graphic spec="graph"></st2-graphic>
       </div>
       <div class="graph__info st2-notooltip" spec="graph"></div>
+      <hr class="st2-drop" drop="moveTo(from, $index)"/>
     </div>
+    <hr class="st2-drop" drop="moveTo(from, dashboard.graphs.length)"/>
   </div>
 </div>

@@ -4,7 +4,7 @@
   angular.module('main')
     .controller('GraphCtrl', ['$scope', 'st2Colors', 'st2GraphGraph', 'st2GraphDashboard', 'st2GraphService',
       function ($scope, colors, Graph, Dashboard, graphService) {
-        
+
         var area = {
           type: 'area'
         }, percent = {
@@ -12,17 +12,17 @@
         };
 
         $scope.dashboardid = 'default';
-        
+
         $scope.addGraph = function () {
           $scope.spec = new Graph($scope.dashboard);
           $scope.showOverlay = true;
         };
-        
+
         $scope.removeGraph = function (graph) {
           $scope.dashboard.removeGraph(graph);
           $scope.dashboard.save();
         };
-        
+
         $scope.editGraph = function (graph) {
           $scope.spec = graph.clone();
           $scope.showOverlay = true;
@@ -38,6 +38,14 @@
           $scope.dashboard && $scope.dashboard.remove();
           $scope.dashboard = new Dashboard($scope, val);
         });
+
+        $scope.moveTo = function (from, to) {
+          console.log(from, '->', to);
+          $scope.$apply(function () {
+            $scope.dashboard.graphs.splice(to, 0, $scope.dashboard.graphs.splice(from, 1)[0]);
+          });
+          $scope.dashboard.save();
+        };
 
       }]);
 
